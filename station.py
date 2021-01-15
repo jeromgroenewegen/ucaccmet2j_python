@@ -1,3 +1,4 @@
+# PART 1
 # TO DO:
 # retrieve station code
 import csv
@@ -67,7 +68,21 @@ for station in station_data:
             valuesdecember.append(int(station['value']))
             sumdecember = sum(valuesdecember)
 
+# Create list for sums
 summonths = [sumjanuary, sumfebruary, summarch, sumapril, summay, sumjune, sumjuly, sumaugust, sumseptember, sumoctober, sumnovember, sumdecember]
 
+# Convert list to json file
 with open('json_summonths', 'w') as json_file_summonths:
     json.dump(summonths, json_file_summonths)
+
+# PART 2
+sumyear = sumjanuary + sumfebruary + summarch + sumapril + summay + sumjune + sumjuly + sumaugust + sumseptember + sumoctober + sumnovember + sumdecember
+print(sumyear)
+
+# calculate relative precipitation per month
+perc_year = list()
+for month in summonths:
+    perc_year.append((int(month)/sumyear)*100)
+
+
+
